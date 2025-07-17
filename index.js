@@ -6,11 +6,12 @@ const URL = require("./models/url");
 const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = 8001;
+const PORT = process.env.PORT || 8001;
 // MongoDB connection
-mongoose.connect("mongodb://localhost:27017/short-url")
+mongoose.connect("mongodb+srv://2k23csai2310628:kashish..bhadauriya@cluster0.39cze98.mongodb.net/short-url?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error(err));
+
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
