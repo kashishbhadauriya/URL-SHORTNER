@@ -8,9 +8,16 @@ const bodyParser = require("body-parser");
 const app = express();
 const PORT = process.env.PORT || 8001;
 // MongoDB connection
-mongoose.connect("mongodb+srv://2k23csai2310628:kashish..bhadauriya@cluster0.39cze98.mongodb.net/short-url?retryWrites=true&w=majority&appName=Cluster0")
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.error(err));
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log("✅ MongoDB connected");
+}).catch(err => {
+  console.error("❌ MongoDB connection error", err);
+});
 
 
 // Middleware
